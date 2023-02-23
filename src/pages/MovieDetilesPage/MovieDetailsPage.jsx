@@ -33,8 +33,8 @@ export const MovieDetilesPage = () => {
   return (
     <main>
       details page
-      {/* {isLoading && <Loader />}
-      <MovieDescription movieDetails={movieDetails} /> */}
+      {isLoading && <Loader />}
+      <MovieDescription movieDetails={movieDetails} />
     </main>
   );
 };

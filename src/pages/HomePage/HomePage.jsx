@@ -1,11 +1,10 @@
-import {MoviesGallery} from 'components/MoviesGallery/MoviesGallery'
+import { MoviesGallery } from 'components/MoviesGallery/MoviesGallery';
 import { MainMarkup } from 'pages/MainMarkup/MainMarkup';
 
-export const HomePage =()=>{
-    return (
-        <main>
-      
-          <MoviesGallery />
-        </main>
-      );
-}
+export const HomePage = () => {
+  return (
+    <main>
+      <MoviesGallery />
+    </main>
+  );
+};

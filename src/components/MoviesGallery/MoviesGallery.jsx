@@ -8,7 +8,7 @@ import { MoviesGalleryItem } from 'components/MoviesGalleryItem/MoviesGalleryIte
 export const MoviesGallery = () => {
   const [movieOptions, setMovieOptions] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  const [totalPage, setTotalPage] = useState(0);
+  const {setTotalPage} = useState(0);
 
   useEffect(() => {
     async function getMovies() {

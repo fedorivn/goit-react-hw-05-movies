@@ -1,4 +1,4 @@
-import { Link, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import {
   GalleryItem,
@@ -8,8 +8,10 @@ import {
 
 export const MoviesGalleryItem = ({ id, title, poster }) => {
   return (
-    <GalleryItem>
+
+   
       <Link to={`/movie/${id}`}>
+         <GalleryItem>
         <div height={550} overflow="hidden">
           {poster && (
             <GalleryImg
@@ -19,7 +21,8 @@ export const MoviesGalleryItem = ({ id, title, poster }) => {
           )}
         </div>
         <GalleryTitle>{title}</GalleryTitle>
+        </GalleryItem>
       </Link>
-    </GalleryItem>
+  
   );
 };
