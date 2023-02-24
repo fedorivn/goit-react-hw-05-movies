@@ -31,7 +31,7 @@ MoviesGallery.propTypes = {
     PropTypes.shape({
       id: PropTypes.number.isRequired,
       original_title: PropTypes.string,
-      poster_path: PropTypes.string.isRequired,
+      poster_path: PropTypes.string,
       popularity: PropTypes.number.isRequired,
     }).isRequired
   ).isRequired,
