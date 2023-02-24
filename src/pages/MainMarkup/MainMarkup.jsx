@@ -1,17 +1,18 @@
-import { Header, SiteNavLink, Logo } from 'pages/MainMarkup/MainMarkup.styled';
+import { Header, SiteNavLink } from 'pages/MainMarkup/MainMarkup.styled';
 
 import { TfiVideoClapper } from 'react-icons/tfi';
 import { IconContext } from 'react-icons';
-import { Outlet } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import PropTypes from "prop-types"
 
 export const MainMarkup = ({children}) => {
   return (
     <div>
       <Header>
       <IconContext.Provider value={{ color: 'white', size: '24px' }}>
-        <Logo to="/">
+        <Link to="/">
           <TfiVideoClapper />
-        </Logo>
+        </Link>
       </IconContext.Provider>
       <nav>
         <SiteNavLink to="/" end >Home</SiteNavLink>
@@ -22,3 +23,7 @@ export const MainMarkup = ({children}) => {
     </div>
   );
 };
+
+MainMarkup.propTypes ={
+  children: PropTypes.element.isRequired
+}

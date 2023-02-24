@@ -4,6 +4,7 @@ export const GalleryItem = styled.li`
   border: 1px solid black;
   overflow: hidden;
   border-radius: 4px;
+  text-decoration:none;
 `;
 export const GalleryTitle = styled.h3`
   margin-left: 20px;

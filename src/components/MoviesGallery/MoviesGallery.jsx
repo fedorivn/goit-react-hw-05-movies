@@ -1,48 +1,38 @@
-import { API } from 'servises/API';
-import { useState, useEffect } from 'react';
-
-import { Loader } from 'components/Loader/Loader';
 import { MoviesGalleryList } from 'components/MoviesGallery/MoviesGallery.styled';
 import { MoviesGalleryItem } from 'components/MoviesGalleryItem/MoviesGalleryItem';
+import { Link, useLocation } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
-export const MoviesGallery = () => {
-  const [movieOptions, setMovieOptions] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
-  const {setTotalPage} = useState(0);
-
-  useEffect(() => {
-    async function getMovies() {
-      try {
-        setIsLoading(true);
-        const data = await API.fetchTrendingMovies();
-
-        setMovieOptions(data.results);
-        setTotalPage(data.total_pages);
-      } catch (error) {
-      } finally {
-        setIsLoading(false);
-      }
-    }
-    getMovies();
-  }, []);
+export const MoviesGallery = ({ movies }) => {
+  const location = useLocation();
 
   return (
     <>
-      {isLoading && <Loader />}
-      {movieOptions.length > 0 && (
+      {movies.length > 0 && (
         <MoviesGalleryList>
-          {movieOptions.map(({ id, original_title, poster_path }) => {
+          {movies.map(({ id, original_title, poster_path }) => {
             return (
-              <MoviesGalleryItem
-                key={id}
-                title={original_title}
-                id={id}
-                poster={poster_path}
-              />
+              <Link to={`/movies/${id}`} state={{ from: location }} key={id}>
+                <MoviesGalleryItem
+                  title={original_title}
+                  id={id}
+                  poster={poster_path}
+                />
+              </Link>
             );
           })}
         </MoviesGalleryList>
       )}
     </>
   );
+};
+MoviesGallery.propTypes = {
+  movies: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      original_title: PropTypes.string,
+      poster_path: PropTypes.string.isRequired,
+      popularity: PropTypes.number.isRequired,
+    }).isRequired
+  ).isRequired,
 };

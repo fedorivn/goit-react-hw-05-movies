@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import PropTypes from "prop-types"
 
 import {
   GalleryItem,
@@ -6,12 +6,10 @@ import {
   GalleryImg,
 } from 'components/MoviesGalleryItem/MoviesGalleryItem.styled';
 
-export const MoviesGalleryItem = ({ id, title, poster }) => {
+export const MoviesGalleryItem = ({ title, poster }) => {
   return (
-
-   
-      <Link to={`/movie/${id}`}>
-         <GalleryItem>
+    <>
+      <GalleryItem>
         <div height={550} overflow="hidden">
           {poster && (
             <GalleryImg
@@ -20,9 +18,13 @@ export const MoviesGalleryItem = ({ id, title, poster }) => {
             />
           )}
         </div>
-        <GalleryTitle>{title}</GalleryTitle>
-        </GalleryItem>
-      </Link>
-  
+        <GalleryTitle>{title || 'Press more for details'} </GalleryTitle>
+      </GalleryItem>
+    </>
   );
 };
+
+MoviesGalleryItem.propTypes= {
+  title: PropTypes.string,
+  poster: PropTypes.string.isRequired
+}

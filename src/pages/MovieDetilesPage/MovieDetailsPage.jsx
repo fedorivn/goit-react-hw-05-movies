@@ -7,7 +7,7 @@ import { Loader } from 'components/Loader/Loader';
 import { MovieDescription } from 'components/MovieDecrItem/MovieDecrItem';
 
 export const MovieDetilesPage = () => {
-  const { id } = useParams();
+  const { movieId } = useParams();
   const [movieDetails, setMovieDetails] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -16,7 +16,7 @@ export const MovieDetilesPage = () => {
       try {
         setIsLoading(true);
 
-        const movieData = await API.fetchMovieById(id);
+        const movieData = await API.fetchMovieById(movieId);
         setMovieDetails(movieData);
       } catch (error) {
       } finally {
@@ -24,7 +24,7 @@ export const MovieDetilesPage = () => {
       }
     }
     getMoviesByid();
-  }, [id]);
+  }, [movieId]);
 
   if (!movieDetails) {
     return null;
@@ -32,7 +32,6 @@ export const MovieDetilesPage = () => {
 
   return (
     <main>
-      details page
       {isLoading && <Loader />}
       <MovieDescription movieDetails={movieDetails} />
     </main>

@@ -10,7 +10,7 @@ export const CreditsList = styled.ul`
   margin-top: 30px;
 `;
 
-export const CreditsListItem = styled.ul`
+export const CreditsListItem = styled.li`
 
 `
 

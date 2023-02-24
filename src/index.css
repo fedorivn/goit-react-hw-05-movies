@@ -13,3 +13,44 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+/* input {
+  background-color: #fff;
+
+  width: 100%;
+  font: inherit;
+  font-size: 20px;
+  border: 2px solid #3a87fb;
+  background-color: transparent;
+  outline: none;
+  padding: 6px;
+  border-radius: 5px;
+  color: #3a87fb;
+}
+
+
+
+input[type='submit'] {
+  background-color: #fff;
+
+  width: 100px;
+  font: inherit;
+  font-size: 20px;
+  border: 2px solid #3a87fb;
+  background-color: transparent;
+  outline: none;
+  padding: 6px;
+  border-radius: 5px;
+  color: #3a87fb;
+  font-weight: 600;
+}
+
+input[type='submit']:hover {
+  background-color: #3a87fb;
+  color: white;
+} */
+
+a {
+  text-decoration: none;
+  color: white;
+}

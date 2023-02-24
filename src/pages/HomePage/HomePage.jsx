@@ -1,10 +1,34 @@
+import { Loader } from 'components/Loader/Loader';
 import { MoviesGallery } from 'components/MoviesGallery/MoviesGallery';
-import { MainMarkup } from 'pages/MainMarkup/MainMarkup';
+import { useEffect, useState } from 'react';
+import { API } from 'servises/API';
 
 export const HomePage = () => {
+  const [movieOptions, setMovieOptions] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+
+  // const location = useLocation();
+
+  useEffect(() => {
+    async function getMovies() {
+      try {
+        setIsLoading(true);
+        const data = await API.fetchTrendingMovies();
+
+        setMovieOptions(data.results);
+      } catch (error) {
+      } finally {
+        setIsLoading(false);
+      }
+    }
+    getMovies();
+  }, []);
+
   return (
     <main>
-      <MoviesGallery />
+      {isLoading && <Loader />}
+
+      <MoviesGallery movies={movieOptions} />
     </main>
   );
 };
