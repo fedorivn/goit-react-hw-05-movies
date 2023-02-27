@@ -18,7 +18,11 @@ export const SearchMovieForm = ({ onSearhFormSubmit }) => {
       toast.error('Please enter your search request');
       return;
     }
-
+    // if (query.trim() === '') {
+    //   toast.error('Please enter a valid movie title');
+    //   return;
+    // }
+    
     onSearhFormSubmit(query);
       setQuery('');
   };

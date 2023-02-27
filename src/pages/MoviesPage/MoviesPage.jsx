@@ -6,6 +6,8 @@ import { Loader } from 'components/Loader/Loader';
 import { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { API } from 'servises/API';
+import { toast } from 'react-toastify';
+
 
 export const MoviesPage = () => {
   const [foundMovies, setFoundMovies] = useState([]);
@@ -24,6 +26,12 @@ export const MoviesPage = () => {
       try {
         setIsLoading(true);
         const movies = await API.fetchSearchMovie(searchMovie);
+        console.log(movies)
+        if (movies.length === 0 ){
+          console.log('in if')
+        toast.error('There are no results found')
+        return
+        }
         setFoundMovies(movies);
         
       } catch (error) {
@@ -34,7 +42,7 @@ export const MoviesPage = () => {
     getSearchMovies();
   }, [searchMovie]);
 
-  
+
 
   const onSubmit = search => {
     setSearchMovieParams({ query: search });
