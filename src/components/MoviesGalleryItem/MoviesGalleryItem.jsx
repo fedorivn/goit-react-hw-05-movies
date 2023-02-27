@@ -24,7 +24,7 @@ export const MoviesGalleryItem = ({ title, poster }) => {
             />
           )}
         </div>
-        <GalleryTitle>{title || 'Press more for details'} </GalleryTitle>
+        <GalleryTitle>{title || 'Press for more details'} </GalleryTitle>
       </GalleryItem>
     </>
   );

@@ -1,10 +1,31 @@
 import { MoviesGalleryList } from 'components/MoviesGallery/MoviesGallery.styled';
 import { MoviesGalleryItem } from 'components/MoviesGalleryItem/MoviesGalleryItem';
+import { API } from 'servises/API';
+import { Pagination } from 'components/Pagination/Pagination';
+
 import { Link, useLocation } from 'react-router-dom';
+import { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
 export const MoviesGallery = ({ movies }) => {
   const location = useLocation();
+  const [totalPage, setTotalPage] = useState(0);
+  const [page, setPage] = useState(1);
+
+  useEffect(() => {
+    async function getMoviesPages() {
+      try {
+        const data = await API.fetchTrendingMovies(page);
+        setTotalPage(data.total_pages);
+      } catch (error) {}
+    }
+    getMoviesPages();
+  }, [page]);
+
+  const getPage = page => {
+    // console.log('getPage', page);
+    setPage(page);
+  };
 
   return (
     <>
@@ -23,9 +44,11 @@ export const MoviesGallery = ({ movies }) => {
           })}
         </MoviesGalleryList>
       )}
+      <Pagination totalPage={totalPage} getPage={getPage} />
     </>
   );
 };
+
 MoviesGallery.propTypes = {
   movies: PropTypes.arrayOf(
     PropTypes.shape({

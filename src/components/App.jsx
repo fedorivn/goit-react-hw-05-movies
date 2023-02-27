@@ -7,7 +7,6 @@ import { ReviewList } from 'components/MovieReviewEl/MovieReviewEl';
 import { NotFoundPage } from 'pages/NotFoundPage/NotFoundPage';
 import { MainMarkup } from 'pages/MainMarkup/MainMarkup';
 import { MoviesPage } from 'pages/MoviesPage/MoviesPage';
-// import { MoviesGallery } from './MoviesGallery/MoviesGallery';
 import { HomePage } from 'pages/HomePage/HomePage';
 
 

@@ -10,8 +10,9 @@ import { API } from 'servises/API';
 export const MoviesPage = () => {
   const [foundMovies, setFoundMovies] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-
   const [searhMovieParams, setSearchMovieParams] = useSearchParams();
+
+
   const searchMovie = searhMovieParams.get('query') ?? '';
 
   useEffect(() => {
@@ -24,6 +25,7 @@ export const MoviesPage = () => {
         setIsLoading(true);
         const movies = await API.fetchSearchMovie(searchMovie);
         setFoundMovies(movies);
+        
       } catch (error) {
       } finally {
         setIsLoading(false);
@@ -31,6 +33,8 @@ export const MoviesPage = () => {
     }
     getSearchMovies();
   }, [searchMovie]);
+
+  
 
   const onSubmit = search => {
     setSearchMovieParams({ query: search });
@@ -40,6 +44,7 @@ export const MoviesPage = () => {
       <SearchMovieForm onSearhFormSubmit={onSubmit} />
       {isLoading && <Loader />}
       {foundMovies.length > 0 && <MoviesGallery movies={foundMovies} />}
+      
     </div>
   );
 };
